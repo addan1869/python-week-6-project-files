@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Dashboard</title>
+</head>
+<body>
+    <h1>Welcome to My Dashboard</h1>
+    <!-- Student Information -->
+    <h2>Student Information</h2>
+    <p>
+        <strong>Name:</strong>
+        {{ name }}
+    </p>
+    <p>
+        <strong>Course:</strong>
+        {{ course }}
+    </p>
+    <p>
+        <strong>TIME:</strong>
+        {{ time }}
+    </p>
+    <!-- My Tasks -->
+    <h2>My Tasks</h2>
+    <ul>
+        {% for task in tasks %}
+            <li>
+                <strong>{{ task.title }}</strong>
+                {% if task.description %}
+                    - {{ task.description }}
+                {% endif %}
+            </li>
+        {% empty %}
+            <li>No tasks added yet.</li>
+        {% endfor %}
+    </ul>
+    <!-- Pandas Results -->
+    <h2>Pandas Results</h2>
+    <p>
+        <strong>Total Students:</strong>
+        {{ total_students }}
+    </p>
+    <p>
+        <strong>Average Marks:</strong>
+        {{ average_marks }}
+    </p>
+    <p>
+        <strong>Highest Marks:</strong>
+        {{ highest_marks }}
+    </p>
+    <!-- CSV Student Data -->
+    <h2>Student Data From CSV</h2>
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>Name</th>
+            <th>Course</th>
+            <th>Marks</th>
+            <th>Semester</th>
+        </tr>
+        {% for student in students %}
+        <tr>
+            <td>
+                {{ student.name }}
+            </td>
+            <td>
+                {{ student.course }}
+            </td>
+            <td>
+                {{ student.marks }}
+            </td>
+            <td>
+                {{ student.semester }}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
